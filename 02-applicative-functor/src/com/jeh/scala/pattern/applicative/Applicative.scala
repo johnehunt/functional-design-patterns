@@ -18,14 +18,14 @@ abstract class ListApplicativeFunctor[A](list: List[A]) extends ApplicativeFunct
   }
 }
 
-case class IntListAppFunctor(list: List[Int], val identity: Int = 0) 
+case class IntListAppFunctor(list: List[Int], identity: Int = 0)
                                                      extends ListApplicativeFunctor[Int](list)
 
 object IntListAppFunctor {
   implicit def pure(a: Int) = IntListAppFunctor(List[Int](a))
 }
 
-object Test extends App {
+object Test3 extends App {
 
   val af = IntListAppFunctor(List(1, 2))
   val increase = (x: Int) => x + 1

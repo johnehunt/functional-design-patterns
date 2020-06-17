@@ -38,7 +38,7 @@ object ListMonad {
   def pure[A](a: A) = ListMonad(List(a))
 }
 
-object Test extends App {
+object Test5 extends App {
   val monad = ListMonad[Int](List(1, 2))
   println(monad)
   println(monad append List(6, 7))

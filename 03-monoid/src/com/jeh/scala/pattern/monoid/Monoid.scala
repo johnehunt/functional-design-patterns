@@ -5,7 +5,7 @@ trait Monoid[T] {
   val identity: T
 }
 
-case class StringMonoid extends Monoid[String] {
+class StringMonoid extends Monoid[String] {
   def append(s1: String, s2: String) = s1 + s2
   val identity = ""
 }
@@ -16,8 +16,8 @@ object IntMonoid extends Monoid[Int] {
   val identity = 0
 }
 
-object Test extends App {
-  val stringMonoid = StringMonoid()
+object Test4 extends App {
+  val stringMonoid = new StringMonoid()
   println(stringMonoid.append(stringMonoid.identity, "John"))
   println(stringMonoid.append("John", "Hunt"))
 
