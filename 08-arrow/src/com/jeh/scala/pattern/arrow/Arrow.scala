@@ -1,5 +1,15 @@
 package com.jeh.scala.pattern.arrow
 
+/**
+ * In function-oriented applications it may be useful to
+ * combine together functions, to split functions apart and
+ * to manage those functions in an ordered manner.
+ *
+ * The Arrow pattern provides a way to handle such functions,
+ * to combine them into larger functions and to split
+ * them as required.
+ * @tparam A
+ */
 trait Arrow[A[-_, +_]] {
   def arrow[B, C](f: B => C): A[B, C]
 
