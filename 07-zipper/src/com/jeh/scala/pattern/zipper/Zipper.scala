@@ -78,15 +78,13 @@ object Test extends App {
   import Zipper._
 
   val data = Seq("John", "Denise", "Phoebe", "Adam")
-  var zip = zipper[String](l = Nil, f = data.head, r = data.tail)
+  val zip = zipper[String](l = Nil, f = data.head, r = data.tail)
   println(zip)
   println(zip.atStart)
-  zip = zip.next.get
+  val zip2 = zip.next.get
   println(zip)
-  println(zip.atStart)
-  zip = zip.prev.get
-  println(zip)
-  println(zip.atStart)
+  println(zip2)
+  println(zip2.atStart)
 }
 
 

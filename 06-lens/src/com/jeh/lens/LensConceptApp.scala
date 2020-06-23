@@ -7,15 +7,16 @@ case class User(id: Int, address: Address)
 object Util {
   // Non Lens style of update
   // Can get difficult to read, convoluted, easy to get wrong
-  def changeStreetNumber(user: User, i: Int): User = {
+  def changeStreetNumber(user: User, newStreetNumber: Int): User = {
     user.copy(
       address = user.address.copy(
         street = user.address.street.copy(
-          number = i
+          number = newStreetNumber
         )
       )
     )
   }
+  def getStreetNumber(user: User): Int = user.address.street.number
 }
 
 object LensUtils {
@@ -44,7 +45,7 @@ object LensIdeaApp extends App {
   // Inner most lens
   val streetNumberLens = Lens[Street, Int](
     get = street => street.number,
-    set = (street, i) => street.copy(number = i)
+    set = (street, newStreetNumber) => street.copy(number = newStreetNumber)
   )
 
   val street = Street("High Street", 10)
@@ -59,6 +60,8 @@ object LensIdeaApp extends App {
     get = address => address.street,
     set = (address, street) => address.copy(street = street)
   )
+
+  println(addressStreetLens.get(address))
 
   // Combining the lenses together
   val addressStreetNumberLens: Lens[Address, Int] =
