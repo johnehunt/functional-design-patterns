@@ -12,5 +12,6 @@ case class ListFunctor2[A](identity: A, list: List[A]) extends Functor2[List,A]{
 object Test2 extends App {
   val lf = ListFunctor2[Int](0, List(1,2))
   println(lf.fmap(_ + 1))
+  println(lf.fmap(i => i + 1))
 }
 
